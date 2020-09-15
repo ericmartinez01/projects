@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The Todo App</title>
+    </head>
+    <body>
+        <h1>To-Do List</h1>
+        <input type='text' id="text-value" placeholder="New Todo">
+        <button id="add-todo">Submit</button>
+        <button id="clear-list">Clear List</button>
+    </body>
+    <script src="todo-app.js"></script>
+    <script>
+    
+    let todoItems = {
+        todos: [],
+        addTodo: {
+            todo: '', 
+            completed: false
+        }
+    }
+   
+    let todoTask = document.getElementById('text-value').addEventListener('input', function(e) {
+        return e.target.value
+    })
+
+    document.getElementById('add-todo').addEventListener('click', function(e) {
+        todoItems.todos.push({todo: todoTask, completed: false})
+    })
+
+    console.log(todoItems.todos)
+    
+
+    </script>
+</html>
