@@ -5,30 +5,64 @@
     </head>
     <body>
         <h1>To-Do List</h1>
-        <input type='text' id="text-value" placeholder="New Todo">
+        <input type='text' id="input-field" placeholder="New Todo">
         <button id="add-todo">Submit</button>
         <button id="clear-list">Clear List</button>
+        <ul></ul>
     </body>
     <script src="todo-app.js"></script>
     <script>
     
     let todoItems = {
         todos: [],
-        addTodo: {
-            todo: '', 
-            completed: false
+        addTodo: function(text) {
+            this.todos.push({
+                todo: text,
+                completed: false
+            })
+            console.log(this.todos)
+        }, 
+        deleteTodo: function(index) {
+            todoItems.todos.splice(index, 1);
+            console.log(this.todos)
         }
-    }
+    };
    
-    let todoTask = document.getElementById('text-value').addEventListener('input', function(e) {
-        return e.target.value
-    })
+    let inputField = document.getElementById('input-field');
+    let addTodoButton = document.getElementById('add-todo');
 
-    document.getElementById('add-todo').addEventListener('click', function(e) {
-        todoItems.todos.push({todo: todoTask, completed: false})
-    })
 
-    console.log(todoItems.todos)
+    let createTodo = addTodoButton.addEventListener('click', function (){
+        let paragraph = document.createElement('p');
+        let deleteButton = document.createElement('button');
+        let doneButton = document.createElement('button');
+        todoItems.addTodo(inputField.value);
+        
+        // todo text
+        paragraph.innerText = inputField.value;
+        document.querySelector('body').appendChild(paragraph)
+        
+        // delete button
+        deleteButton.innerText = 'X';
+        deleteButton.className = inputField.value;
+        paragraph.appendChild(deleteButton);
+
+        // done button
+        doneButton.innerText = 'Done'
+        paragraph.appendChild(doneButton)
+        
+        inputField.value = '';
+
+
+        paragraph.addEventListener('click', function(e) {
+            if(deleteButton.className === e.target.className)
+                var ti = todoItems.todos.findIndex((text) => {
+                    return text.todo === e.target.className
+                });
+        todoItems.deleteTodo(ti);
+        })
+    });
+    
     
 
     </script>
