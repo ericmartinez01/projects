@@ -22,7 +22,7 @@
         }
     };
    
-    
+
     const inputField = document.getElementById('input-field');
     const addTodoButton = document.getElementById('add-todo');
     const clearListButton = document.getElementById('clear-list');
@@ -49,7 +49,7 @@
                 // todo text
                 paragraph.innerText = todo.todo;
                 paragraph.id = position;
-                document.querySelector('div').appendChild(paragraph)
+                document.querySelector('div').appendChild(paragraph);
                 
                 // delete button
                 deleteButton.innerText = 'X';
