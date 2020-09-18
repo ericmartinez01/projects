@@ -22,6 +22,7 @@
         }
     };
    
+    
     const inputField = document.getElementById('input-field');
     const addTodoButton = document.getElementById('add-todo');
     const clearListButton = document.getElementById('clear-list');
